@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write # this must be set to 'write' in order for the workflow to add a tag
-#      issues: write
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
@@ -26,6 +25,5 @@ jobs:
         uses: rickstaa/action-create-tag@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        id: tag_create
         with:
           tag: ${{steps.version.outputs.version_tag}}
