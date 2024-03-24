@@ -24,7 +24,8 @@ jobs:
         uses: rickstaa/action-create-tag@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: ${{ env.GITHUB_REF_NAME }}
         with:
-          tag: ${{steps.version.outputs.version_tag}}-${{ env.GITHUB_REF_NAME }}
+          tag: ${{steps.version.outputs.version_tag}}-${{ env.BRANCH_NAME }}
       - name: Show the feature tag value
         run: 'echo This is the feature tag value that any job or step in the workflow can now use: ${{steps.version.outputs.version_tag}}'
