@@ -3,11 +3,12 @@ name: Push to feature branch
 on:
   push:
     branches:
+      - '**'
       - '!main'
 
 jobs:
   process-push:
-    name: Execute push on all branches except main
+    name: Execute push on feature branch
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
