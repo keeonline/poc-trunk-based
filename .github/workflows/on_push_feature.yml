@@ -10,10 +10,21 @@ jobs:
   process-push:
     name: Execute push on feature branch
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # this must be set to 'write' in order for the workflow to add a tag
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Show me you are working
-        run: echo "This is the 'Push to feature branch'!!!"
+      - name: Determine feature tag value
+        id: version
+        uses: paulhatch/semantic-version@v5.4.0
+      - name: Tag the branch with the feature version
+        uses: rickstaa/action-create-tag@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag: ${{steps.version.outputs.version_tag}}-${{ env.GITHUB_REF_NAME }}
+      - name: Show the feature tag value
+        run: 'echo This is the feature tag value that any job or step in the workflow can now use: ${{steps.version.outputs.version_tag}}'
