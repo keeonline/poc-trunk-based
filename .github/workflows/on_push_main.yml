@@ -16,15 +16,18 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Determine application version
-        id: version
+      - name: Determine application tag value
+        id: determine_version
         uses: paulhatch/semantic-version@v5.4.0
-      - name: Tag the branch with the application workflow
+      - name: Create an application tag 
+        id: application_tag
+        run: echo "value=${{ steps.determine_version.outputs.version_tag }}" >> $GITHUB_OUTPUT
+      - name: Show the application tag value
+        run: 'echo This is the apliction tag value that any job or step in the workflow can now use: ${{steps.application_tag.outputs.value}}'
+      - name: Tag the branch with the application version
         uses: rickstaa/action-create-tag@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag: ${{steps.version.outputs.version_tag}}
-      - name: Show the tag value
-        run: 'echo This is the tag value that any job or step in the workflow can now use: ${{steps.version.outputs.version_tag}}'
+          tag: ${{steps.application_tag.outputs.value}}
   
