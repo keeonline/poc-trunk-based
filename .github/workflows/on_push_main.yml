@@ -28,4 +28,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         id: tag_create
         with:
-          tag: ${{steps.version.outputs.version}}
+          tag: ${{steps.version.outputs.version_tag}}
