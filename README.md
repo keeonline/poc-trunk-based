@@ -2,4 +2,6 @@
 
 This is the 'bob' feature.  
 This is 'feature-1'.  
-This is 'feature-2'.  
+This is 'feature-2'. 
+
+attempt at semver
