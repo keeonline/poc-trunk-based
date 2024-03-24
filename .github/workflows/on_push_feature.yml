@@ -22,7 +22,7 @@ jobs:
         uses: paulhatch/semantic-version@v5.4.0
       - name: Create a tag for the feature
         id: feature_tag
-        run: echo value=${{ steps.determine_version.outputs.version_tag }}-${$GITHUB_REF_NAME} >> $GITHUB_OUTPUT
+        run: echo 'value=${{ steps.determine_version.outputs.version_tag }}-${$GITHUB_REF_NAME} >> $GITHUB_OUTPUT'
       - name: Show the feature tag value
         run: 'echo This is the feature tag value that any job or step in the workflow can now use: ${{steps.feature_tag.outputs.value}}'
       - name: Tag the branch with the feature tag value
