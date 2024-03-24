@@ -16,14 +16,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Show me you are working
-        run: echo "This is the 'Push to main workflow'!!!"
       - name: Determine application version
         id: version
         uses: paulhatch/semantic-version@v5.4.0
-      - name: Tag branch
+      - name: Tag the branch with the application workflow
         uses: rickstaa/action-create-tag@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag: ${{steps.version.outputs.version_tag}}
+      - name: Show the tag value
+        run: 'echo This is the tag value that any job or step in the workflow can now use: ${{steps.version.outputs.version_tag}}'
+  
