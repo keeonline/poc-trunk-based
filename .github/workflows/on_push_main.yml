@@ -10,8 +10,8 @@ jobs:
     name: Execute push on main
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      issues: write
+      contents: write # this must be set to 'write' in order for the workflow to add a tag
+#      issues: write
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
