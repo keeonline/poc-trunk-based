@@ -25,9 +25,9 @@ jobs:
         run: echo "value=${{ steps.determine_version.outputs.version_tag }}+${{ steps.determine_version.outputs.increment }}-${GITHUB_REF_NAME}" >> $GITHUB_OUTPUT
       - name: Show the feature tag value
         run: 'echo This is the feature tag value that any job or step in the workflow can now use: ${{steps.feature_tag.outputs.value}}'
-      - name: Tag the branch with the feature tag value
-        uses: rickstaa/action-create-tag@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag: ${{ steps.feature_tag.outputs.value }}
+      # - name: Tag the branch with the feature tag value
+      #   uses: rickstaa/action-create-tag@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     tag: ${{ steps.feature_tag.outputs.value }}
