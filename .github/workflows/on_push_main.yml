@@ -10,7 +10,7 @@ jobs:
     name: Execute push on main
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       issues: write
     steps:
       - name: Checkout source code
