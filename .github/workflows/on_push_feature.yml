@@ -17,6 +17,3 @@ jobs:
           fetch-depth: 0
       - name: Show me you are working
         run: echo "This is the 'Push to feature branch'!!!"
-      - name: Application Version
-        id: version
-        uses: paulhatch/semantic-version@v5.4.0
