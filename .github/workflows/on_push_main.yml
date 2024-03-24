@@ -1,16 +1,16 @@
-name: Push to feature branch
+name: Push to main branch
 
 on:
   push:
     branches:
-      - '!main'
+      - main
 
 jobs:
   process-push:
-    name: Execute push on all branches except main
+    name: Execute push on main
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
       - name: Show me you are working
-        run: echo "This is the 'Push to feature branch'!!!"
+        run: echo "This is the 'Push to main workflow'!!!"
